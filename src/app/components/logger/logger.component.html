@@ -1,0 +1,11 @@
+<h6>Logger</h6>
+
+<ul class="logger-wrapper">
+  <li *ngFor="let log of logs">
+    Clicked at {{ log.timestamp | date: 'hh:mm:ss' }}, with value {{ log.value }}
+  </li>
+</ul>
+
+<div *ngIf="logs && logs.length === 0">
+  <h6 class="text-muted">- No logs were found -</h6>
+</div>

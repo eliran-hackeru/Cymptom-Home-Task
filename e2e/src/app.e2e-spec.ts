@@ -8,9 +8,9 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  it('should render the page header', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('qa-automation-task app is running!');
+    expect(page.getTitleText()).toEqual('QA Automation Task');
   });
 
   afterEach(async () => {

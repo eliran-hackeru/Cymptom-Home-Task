@@ -1,0 +1,11 @@
+<h6>Counter (minimum value: 0)</h6>
+
+<div class="d-flex">
+  <div class="d-flex">
+    <input id="increase_btn" type="button" class="form-control" value="+" (click)="increaseCounter()" />
+    <input id="decrease_btn" type="button" class="form-control" value="-" (click)="decreaseCounter()" />
+  </div>
+
+  <input id="counter_input" (keydown)="onInputKeydown($event)" type="number" [(ngModel)]="value"
+   class="form-control" />
+</div>
