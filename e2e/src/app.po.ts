@@ -24,6 +24,18 @@ export class AppPage {
   }
 
   getCounterValue() {
-    return element(by.id("counter_input"));
+    return element(by.id('counter_input')).getAttribute('ng-reflect-model') as Promise<string>;
+  }
+
+  increaseButton() {
+    return element(by.id('increase_btn')).click;
+  }
+
+  decreaseButton() {
+    return element(by.id('decrease_btn')).click();
+  }
+
+  clearButton() {
+    return element(by.className('form-control mt-2')).click();
   }
 }
