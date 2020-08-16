@@ -31,7 +31,7 @@ describe("CounterComponent", () => {
     decreaseButton = htmlElement.querySelector("#decrease_btn");
   }));
 
-  it("should create", () => {
+  it("should create the counter component", () => {
     expect(component).toBeTruthy();
   });
 
@@ -63,6 +63,56 @@ describe("CounterComponent", () => {
 
     // Check the new value
     expect(inputElement.value).toBe("1");
+  }));
+
+  it("should not decrease the value to -1 and render it", fakeAsync(() => {
+    decreaseButton.click();
+
+    // Detect changes and wait for the to occur
+    fixture.detectChanges();
+    tick();
+
+    // Check the new value
+    expect(inputElement.value).toBe("0");
+  }));
+
+  it("should not decrease the value to -1 using the arrow down key", fakeAsync(() => {
+    // Simulate an arrow down event
+    const keyDownEvent: KeyboardEvent = new KeyboardEvent("keydown", {
+      key: "ArrowDown",
+    });
+    inputElement.dispatchEvent(keyDownEvent);
+
+    // Detect changes and wait for the to occur
+    fixture.detectChanges();
+    tick();
+
+    // Check the new value
+    expect(inputElement.value).toBe("0");
+  }));
+
+  it("should render the value directly by the keyboard", fakeAsync(() => {
+    // Simulate a positive number
+    inputElement.value = "100";
+
+    // Detect changes and wait for the to occur
+    fixture.detectChanges();
+    tick();
+
+    // Check the new value
+    expect(inputElement.value).toBe("100");
+  }));
+
+  it("should not render the value directly if it's a negative number", fakeAsync(() => {
+    // Simulate a positive number
+    inputElement.value = "-100";
+
+    // Detect changes and wait for the to occur
+    fixture.detectChanges();
+    tick();
+
+    // Check the new value
+    expect(inputElement.value).toBe("0");
   }));
 
   // TODO: Check all of the remaining cases, such as arrow keys input, custom values, etc...
